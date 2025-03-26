@@ -10,7 +10,7 @@ module.exports = async function isRegister(req, res, next){
   return  res.send("no user found in database: ")
   }
 
-  console.log(user)
+  // console.log(user)
     
     next()
 

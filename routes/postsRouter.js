@@ -2,8 +2,9 @@ const express = require("express")
 const router = express.Router()
 const postModel = require("../models/post-model")
 const userModel = require("../models/user-model")
+const isLogin = require("../middlewares/isLogin")
 
-router.get("/create", (req, res)=>{
+router.get("/create",isLogin, (req, res)=>{
   try {
     res.render("create-posts")
     

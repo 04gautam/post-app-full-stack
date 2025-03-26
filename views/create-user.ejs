@@ -7,16 +7,20 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+ <%- include('../partials/header') %>
   <main class="bg-white p-8 rounded-lg shadow-xl w-full max-w-lg ring">
 
 <h1 class="mb-8 text-lg text-blue-600">Post App </span></h1>
-    <form class="grid space-y-5" action="/user" method="post">
-      <input type="text" name="name" placeholder="Enter Your name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-      <input type="text" name="email" placeholder="Enter Email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-      <input type="password" name="password" placeholder="Enter Password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+    <form class="grid space-y-5" action="/register" method="post">
+      <input type="text" name="name" placeholder="Enter Your name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none" required>
+      <input type="text" name="email" placeholder="Enter Email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none" required>
+      <input type="password" name="password" placeholder="Enter Password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none" required>
       <button class="bg-blue-500 p-2 text-white hover:bg-blue-600 rounded-lg">Submit</button>
-    </form>
 
+      <button class="bg-green-400 p-2 text-white hover:bg-green-600 rounded-lg"><a href="http://localhost:3000/login">Login</a></button>
+    </form>
+    
    </main>
 </body>
 </html>
