@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+</head>
+<body class="bg-gray-300 flex flex-col gap-5 items-center justify-center min-h-screen">
+   
+
+  <div class="mb-14">
+
+    <%- include('../partials/header') %>
+  </div>
+   
+
+  <% findAllPost.forEach((evePost)=>{%>
+   
+    <div class="max-w-sm mx-auto w-full bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+         <!-- Card Header with Author Info -->
+         <div class="flex items-center p-4">
+           <div class="ml-3">
+             <p class="text-sm font-medium text-gray-900">@<%=evePost.author.name%></p>
+         
+           </div>
+         </div>
+         
+         <!-- Card Body -->
+         <div class="p-10">
+           <!-- Post Title -->
+           <h2 class="text-xl font-semibold text-blue-800 mb-2"><%=evePost.title%></h2>
+           
+           <!-- Post Content -->
+           <p class="text-gray-600 mb-4">
+           <%=evePost.discription%>
+           </p>
+             
+           <!-- Action Buttons -->
+           <div class="flex justify-between border-t pt-4">
+             <button class="bg-blue-200 p-2 rounded-xl flex items-center text-gray-500 hover:text-gray-700">
+               
+               <span>Like</span>
+             </button>
+             <button class="bg-pink-200 p-2 rounded-xl flex items-center text-gray-500 hover:text-gray-700">
+               <span>Comment</span>
+             </button>
+             
+           </div>
+         </div>
+     </div>
+ <%}) %>
+
+
+  
+</body>
+</html>

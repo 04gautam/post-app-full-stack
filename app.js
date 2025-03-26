@@ -1,0 +1,21 @@
+const express = require("express")
+const app = express()
+const dotenv = require("dotenv").config()
+
+const dbConnection = require("./config/db-connection")
+const postModel = require("./models/post-model")
+const userModel = require("./models/user-model")
+
+const userRouter = require("./routes/userRouter")
+const postRouter = require("./routes/postsRouter")
+const indexRouter = require("./routes/indexRouter")
+const cookieParser = require("cookie-parser")
+app.set("view engine", "ejs")
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(cookieParser())
+app.use("/",userRouter)
+app.use("/",postRouter)
+app.use("/",indexRouter)
+
+app.listen(3000, ()=>console.log("server is running on port no. 3000"))
