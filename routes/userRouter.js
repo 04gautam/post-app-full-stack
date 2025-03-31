@@ -31,7 +31,7 @@ router.get("/login", (req, res)=>{
   }
 
 })
-router.post("/login",isRegister, (req, res)=>{
+router.post("/login",isRegister,(req, res)=>{
   try {
     
      res.cookie("token", req.body.email)

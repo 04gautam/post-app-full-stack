@@ -20,7 +20,7 @@ router.post("/createpost", async(req, res)=>{
     // console.log(req.cookies.token)
     const findAuthor = await userModel.findOne({email:req.cookies.token})
 
-    console.log(findAuthor)
+    // console.log(findAuthor)
     const createpost = await postModel({
       title,
       discription,

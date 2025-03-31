@@ -11,6 +11,7 @@ const token = req.cookies.token
     return res.redirect("/user")
   }
 
+  req.body.userId = findUser._id; 
   // if(){
   //   return res.redirect("/user")
   // } 
