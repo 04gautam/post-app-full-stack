@@ -40,7 +40,15 @@
            <!-- Action Buttons -->
            <div class="flex justify-between border-t pt-4">
              <button class="bg-blue-200 hover:bg-blue-300 text-white p-2 rounded-xl flex items-center text-gray-500 hover:text-gray-700">
-               <a href="/like/<%=evePost._id%>">Like</a> <h3 class="ml-3 bg-white font-bold text-base p-1 text-black rounded-full"> <%= evePost.likeCount %> </h3>
+               <a href="/like/<%=evePost._id%>"> <%
+                if(evePost.like === "Dislike"){%>
+
+                  <p class=" p-1 text-white bg-green-500 rounded-xl"><%=evePost.like%></p> </a> <h3 class="ml-3 bg-white font-bold text-base p-1 text-black rounded-full"> <%= evePost.likeCount %> </h3>
+                <%}else{%>
+                  <p class=" p-1 text-white bg-red-500 rounded-xl"><%=evePost.like%></p> </a> <h3 class="ml-3 bg-white font-bold text-base p-1 text-black rounded-full"> <%= evePost.likeCount %> </h3>
+
+                <%}
+                %>
              </button>
              <button class="bg-pink-200 hover:bg-pink-300 hover:text-white p-2 rounded-xl flex items-center text-gray-500 hover:text-gray-700">
                Comment

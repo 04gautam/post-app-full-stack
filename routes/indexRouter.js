@@ -7,14 +7,30 @@ const like = require("../models/likes-model")
 const isRegister = require("../middlewares/isRegister")
 
 
-router.get("/", async(req, res)=>{
+
+router.get("/",isLogin,async(req, res)=>{
 try {
+  //   const token =  req.cookies.token
+  //   // if(!token){
+  //   //   token = "h"
+  //   // }
+
+  // const findUser = await userModel.findOne({email:token})
+
   const findAllPost = await postModel.find().populate("author")
+  const {userId} = req.body;
   // .populate("author")
 
   for (let post of findAllPost) {
     post.likeCount = await like.countDocuments({ post: post._id });
-    
+
+     const present = await like.findOne({post:post._id, user:userId})
+     if(!present){
+      post.like = "Like"
+     }else{
+      post.like = "Dislike"
+     }
+    // console.log(findAllPost)
     // console.log(post.likeCount)
     
   }
@@ -51,6 +67,7 @@ router.get("/like/:postId",isLogin, async(req, res)=>{
       // return res.status(400).json({message:"Already liked this post"})
 
       await like.findOneAndDelete({post:postId, user:userId})
+      
      return res.redirect("/")
 
     }
@@ -66,17 +83,7 @@ router.get("/like/:postId",isLogin, async(req, res)=>{
     res.redirect("/")
 
 
-    // const oneLikePost = await postModel.findOne({_id:req.params.likes})
    
-  
-    // // console.log(findLikeUser._id)
-  
-
-    // oneLikePost.likes.push(findLikeUser._id)
-    // oneLikePost.save()
-
-    //  console.log(oneLikePost.likes.length)
-     //  res.redirect("/")
    }
    catch(err){
     res.status(500).json({message:"Server error", error:err.message})
