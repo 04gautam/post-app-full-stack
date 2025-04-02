@@ -8,15 +8,11 @@ const isRegister = require("../middlewares/isRegister")
 
 
 
-router.get("/",isLogin,async(req, res)=>{
+router.get("/",isLogin, async(req, res)=>{
 try {
-  //   const token =  req.cookies.token
-  //   // if(!token){
-  //   //   token = "h"
-  //   // }
-
-  // const findUser = await userModel.findOne({email:token})
-
+  
+    
+    
   const findAllPost = await postModel.find().populate("author")
   const {userId} = req.body;
   // .populate("author")
